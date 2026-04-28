@@ -13,4 +13,4 @@ const nextConfig = {
 
 basePath: '/crasselt-spacetech',
 
-export default nextConfig;
+module.export = nextConfig;
