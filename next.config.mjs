@@ -9,8 +9,7 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
+  basePath: '/crasselt-spacetech',
 };
 
-basePath: '/crasselt-spacetech',
-
-module.export = nextConfig;
+module.exports = nextConfig;
