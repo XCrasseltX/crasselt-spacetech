@@ -7,8 +7,8 @@ export const GravitationalLensShader = {
         tDiffuse: { value: null },
         resolution: { value: new THREE.Vector2() },
         lensCenter: { value: new THREE.Vector2(0.5, 0.5) },
-        strength: { value: 0.03 },
-        holeRadius: { value: 0.1 },
+        strength: { value: 0.05 },
+        holeRadius: { value: 2 },
     },
     vertexShader: `
         varying vec2 vUv;
@@ -31,8 +31,8 @@ export const GravitationalLensShader = {
         void main() {
         vec2 delta = (vUv - lensCenter) * vec2(resolution.x / resolution.y, 1.0);
         float dist = length(delta);
-        vec2 tangent = vec2(-delta.y, delta.x);
-        float ring = smoothstep(holeRadius, holeRadius + 0.01, dist);
+        vec2 tangent = vec2(-delta.y, delta.x); 
+        float ring = smoothstep(holeRadius, holeRadius + 0.03, dist);
         float distortion = strength * ring * exp(-dist * 25.0);
         vec2 offset = normalize(tangent) * distortion;
         vec2 uvOffset = clamp(vUv + offset, vec2(0.0), vec2(1.0));
